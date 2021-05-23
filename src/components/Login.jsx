@@ -4,62 +4,82 @@ import '../assets/css/Login.css';
 
 import logo from '../assets/img/small.png';
 //servicio
-import {Apiurl} from '../service/apirest';
+import { Apiurl } from '../service/apirest';
 //librerias
 import axios from 'axios';
 
 
-class Login extends React.Component{
+class Login extends React.Component {
 
-    state = {
-        form:{
-            "usuario":"",
-            "password":""
-        },
-        error:false,
-        errorMsg:""
+    constructor(props){
+        super(props);
     }
 
-    managerSubmit = e =>{
+    state = {
+        form: {
+            "usuario": "",
+            "password": ""
+        },
+        error: false,
+        errorMsg: ""
+    }
+
+    managerSubmit = e => {
         e.preventDefault();
     }
 
-    managerChange = async e=>{
+    managerChange = async e => {
         await this.setState({
-            form:{
+            form: {
                 ...this.state.form,
                 [e.target.name]: e.target.value
-            }        
+            }
         })
     }
 
     managerButton = () => {
         let url = Apiurl + "login";
-        axios.post(url,this.state.form)
-        .then(response =>{
-            console.log(response);
-        })
+        axios.post(url, this.state.form)
+            .then(response => {
+                if(response.status === 200){
+                    localStorage.setItem("idPersona",response.data.idPersona);
+                    this.props.history.push("/escritorio");
+                }else{
+                    this.setState({
+                        error: true,
+                        errorMsg: response.statusText
+                    })
+                }
+            }).catch(error =>{
+                this.setState({
+                    error: true,
+                    errorMsg: "Error para validar usuario"
+                })
+            })
+        
     }
 
-    render(){
-        return(
+    render() {
+        return (
             <React.Fragment>
                 <div className="wrapper fadeInDown">
                     <div id="formContent">
                         <div className="fadeIn first">
-                        <img src={logo}id="icon" width="100px" alt="User Icon" />
+                            <img src={logo} id="icon" width="100px" alt="User Icon" />
                         </div>
 
                         <form onSubmit={this.managerSubmit}>
-                        <input type="text" className="fadeIn second" name="usuario" placeholder="usuario" onChange={this.managerChange}/>
-                        <input type="password" className="fadeIn third" name="password" placeholder="password" onChange={this.managerChange}/>
-                        <input type="submit" className="fadeIn fourth" value="Log In" onClick={this.managerButton}/>
+                            <input type="text" className="fadeIn second" name="usuario" placeholder="usuario" onChange={this.managerChange} />
+                            <input type="password" className="fadeIn third" name="password" placeholder="password" onChange={this.managerChange} />
+                            <input type="submit" className="fadeIn fourth" value="Log In" onClick={this.managerButton} />
                         </form>
+                    {this.state.error === true &&
+                        <div className="alert alert-danger" role="alert">
+                           {this.state.errorMsg}
+                       </div>
 
-                        <div id="formFooter">
-                        <a className="underlineHover" href="#">Forgot Password?</a>
-                        </div>
-
+                    }    
+                     
                     </div>
                 </div>
             </React.Fragment>
