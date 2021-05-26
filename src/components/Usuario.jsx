@@ -59,7 +59,9 @@ class Usuario extends React.Component{
                 
             });
         })
-        
+    }
+    clickEditar(id){
+        this.props.history.push("/editar/" + id);
     }
 
     render(){
@@ -81,7 +83,6 @@ class Usuario extends React.Component{
                                         <div className="col-md-8">
                                                 <input type="text" className="form-control" name="nombreApellidos" placeholder="nombreApellidos"
                                                     value={form.nombreApellidos}
-                                                    onChange={this.managerChange}
                                                 />
                                         </div>
                                 </div>
@@ -93,7 +94,6 @@ class Usuario extends React.Component{
                                     <div className="col-md-8">
                                             <input type="text" className="form-control" name="dni" placeholder="dni"
                                                 value={form.dni}
-                                                onChange={this.managerChange}
                                             />
                                     </div>
                             </div>
@@ -102,7 +102,6 @@ class Usuario extends React.Component{
                                 <div className="col-md-8">
                                         <input type="text" className="form-control" name="fechaNacimiento" placeholder="Fecha Nacimiento"
                                             value={form.fechaNacimiento}
-                                            onChange={this.managerChange}
                                         />
                                 </div>
                             </div>
@@ -113,7 +112,6 @@ class Usuario extends React.Component{
                                 <div className="col-md-8">
                                         <input type="text" className="form-control" name="email" placeholder="email"
                                             value={form.email}
-                                            onChange={this.managerChange}
                                         />
                                 </div>
                             </div> 
@@ -122,33 +120,40 @@ class Usuario extends React.Component{
                                 <div className="col-md-8">
                                         <input type="text" className="form-control" name="telefono" placeholder="telefono"
                                             value={form.telefono}
-                                            onChange={this.managerChange}
                                         />
                                 </div>
                             </div>
                         </div>
                         <div className="row">
                             <div className="col-sm-6">
-                                <label className="col-md-2 control-label">Usuario</label>
+                                <label className="col-md-2 control-label">Numero Licencia Deportista</label>
                                 <div className="col-md-8">
-                                        <input type="text" className="form-control" name="usuario" placeholder="usuario"
-                                            value={form.usuario}
-                                            onChange={this.managerChange}
+                                        <input type="text" className="form-control" name="usuario" placeholder="numero licencia"
+                                            value={form.numLicenciaDeportista}
                                         />
                                 </div>
                             </div> 
                             <div className="col-sm-6">
-                                <label className="col-md-2 control-label">Contraseña</label>
+                                <label className="col-md-2 control-label">Numero Licencia Entrenador</label>
                                 <div className="col-md-8">
-                                        <input type="text" className="form-control" name="password" placeholder="Contraseña"
-                                            value={form.password}
-                                            onChange={this.managerChange}
+                                        <input type="text" className="form-control" name="password" placeholder="numero licencia"
+                                            value={form.numLicenciaEntrenador}
                                         />
                                 </div>
                             </div>
                         </div>
-                        
+                        <div className="row">
+                            <div className="col-sm-6">
+                                <label className="col-md-2 control-label">Numero Licencia Juez</label>
+                                <div className="col-md-8">
+                                        <input type="text" className="form-control" name="usuario" placeholder="numero licencia"
+                                            value={form.numLicenciaJuez}
+                                        />
+                                </div>
+                            </div>
+                        </div>
                         <br/>
+                        <button type="submit" className="btn btn-success"style={{margin:"10px"}} onClick={()=>this.clickEditar(localStorage.getItem('idPersona'))}>Editar</button> 
                         <a className="btn btn-dark" href="/escritorio" style={{margin:"10px"}}>Salir</a>   
                     </form>
                 </div>

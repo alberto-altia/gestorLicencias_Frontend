@@ -13,7 +13,7 @@ class Escritorio extends React.Component{
     }
 
     clickPersona(id){
-        this.props.history.push("/editar/" + id);
+        this.props.history.push("editar/" + id);
     }
 
     componentDidMount(){
@@ -26,7 +26,6 @@ class Escritorio extends React.Component{
         });
         let personaId = localStorage.getItem('idPersona');
         url = Apiurl + "clubs/" + personaId;
-        console.log(url + "-----" + personaId)
         axios.get(url)
         .then(response => {
             console.log(response)
@@ -41,7 +40,7 @@ class Escritorio extends React.Component{
                 <Header></Header>
                 <br/><br/><br/>
                 <div className="container">
-                    <h3>Licencias Activas</h3>
+                    <h3>Club</h3>
                     <table className="table table-hover">
                         <thead>
                             <tr>

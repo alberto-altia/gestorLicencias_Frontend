@@ -173,7 +173,7 @@ class Editar extends React.Component{
                         </div>
                         
                         <br/>
-                        <button type="submit" className="btn btn-primary" style={{margin:"10px"}} onClick={()=>this.put()}>Editar</button>
+                        <button type="submit" className="btn btn-primary" style={{margin:"10px"}} onClick={()=>this.put()}>Guardar</button>
                         <button type="submit" className="btn btn-danger"style={{margin:"10px"}} onClick={()=>this.delete()}>Eliminar</button> 
                         <a className="btn btn-dark" href="/escritorio" style={{margin:"10px"}}>Salir</a>   
                     </form>
