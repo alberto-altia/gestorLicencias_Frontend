@@ -5,7 +5,7 @@ import {Apiurl} from '../service/apirest';
 
 import Header from '../template/Header';
 
-class Editar extends React.Component{
+class Usuario extends React.Component{
 
     state = {
        form:{
@@ -35,33 +35,9 @@ class Editar extends React.Component{
             }
         })
     }
-
-    put =()=>{
-        let url = Apiurl + "editarPersona";
-        axios.post(url,this.state.form)
-        .then(response=>{
-            console.log(response)
-        })
-    }
-
-    delete = ()=>{
-        let personaId = this.props.match.params.id;
-        let url = Apiurl + "eliminarPersona/" + personaId ;
-        axios.delete(url)
-        .then(response =>{
-            console.log(response)
-            this.props.history.push("/escritorio");
-        })
-    }
-
-    managerSubmit = e=>{
-        e.preventDefault();
-    }
-
-
     componentDidMount(){
-        let id = this.props.match.params.id;
-        let url = Apiurl + "personas/" + id;
+        let personaId = localStorage.getItem('idPersona');
+        let url = Apiurl + "personas/" + personaId;
         axios.get(url)
         .then(response =>{
             
@@ -93,7 +69,7 @@ class Editar extends React.Component{
                 <Header></Header>
                 <br/><br/><br/>
                 <div className="container">
-                    <h3>Editar Persona</h3>
+                    <h3>Datos Persona</h3>
                 </div>
 
                 <div className="container">
@@ -173,8 +149,6 @@ class Editar extends React.Component{
                         </div>
                         
                         <br/>
-                        <button type="submit" className="btn btn-primary" style={{margin:"10px"}} onClick={()=>this.put()}>Editar</button>
-                        <button type="submit" className="btn btn-danger"style={{margin:"10px"}} onClick={()=>this.delete()}>Eliminar</button> 
                         <a className="btn btn-dark" href="/escritorio" style={{margin:"10px"}}>Salir</a>   
                     </form>
                 </div>
@@ -183,4 +157,4 @@ class Editar extends React.Component{
     }
 }
 
-export default Editar
+export default Usuario
