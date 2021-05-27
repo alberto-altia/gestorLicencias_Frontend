@@ -8,6 +8,7 @@ import { Apiurl } from '../service/apirest';
 class Editar extends React.Component {
 
     state = {
+<<<<<<< HEAD
         form: {
             "nombreApellidos": "",
             "fechaNacimiento": "",
@@ -25,6 +26,24 @@ class Editar extends React.Component {
         },
         error: false,
         errorMsg: ""
+=======
+       form:{
+        "nombreApellidos": "",
+        "fechaNacimiento": "",
+        "telefono": "",
+        "email": "",
+        "codClub":"" ,
+        "dni": "",
+        "usuario":"",
+        "password":"",
+        "numLicenciaDeportista": "",
+        "numLicenciaEntrenador": "",
+        "numLicenciaJuez": "",
+        "idPersona": ""
+       },
+       error: false,
+       errorMsg: ""     
+>>>>>>> 8095142a5af2a0d82c79aad6f49798b8a9399d07
     }
 
     managerChange = async e => {
@@ -45,6 +64,7 @@ class Editar extends React.Component {
             })
     }
 
+<<<<<<< HEAD
     delete = () => {
         let personaId = this.props.match.params.id;
         let url = Apiurl + "eliminarPersona/" + personaId;
@@ -61,6 +81,9 @@ class Editar extends React.Component {
     }
 
     managerSubmit = e => {
+=======
+    managerSubmit = e=>{
+>>>>>>> 8095142a5af2a0d82c79aad6f49798b8a9399d07
         e.preventDefault();
     }
 
@@ -195,11 +218,18 @@ class Editar extends React.Component {
                                 </div>
                             </div>
                         </div>
+<<<<<<< HEAD
 
                         <br />
                         <button type="submit" className="btn btn-primary" style={{ margin: "10px" }} onClick={() => this.put()}>Guardar</button>
                         <button type="submit" className="btn btn-danger" style={{ margin: "10px" }} onClick={() => this.delete()}>Eliminar</button>
                         <a className="btn btn-dark" href="/escritorio" style={{ margin: "10px" }}>Salir</a>
+=======
+                        
+                        <br/>
+                        <button type="submit" className="btn btn-primary" style={{margin:"10px"}} onClick={()=>this.put()}>Guardar</button>
+                        <a className="btn btn-dark" href="/escritorio" style={{margin:"10px"}}>Salir</a>   
+>>>>>>> 8095142a5af2a0d82c79aad6f49798b8a9399d07
                     </form>
                 </div>
                 

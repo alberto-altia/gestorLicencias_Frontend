@@ -78,8 +78,7 @@ class Login extends React.Component {
                            {this.state.errorMsg}
                        </div>
 
-                    }    
-                     
+                    }  
                     </div>
                 </div>
             </React.Fragment>
