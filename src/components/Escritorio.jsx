@@ -1,15 +1,15 @@
 import React from 'react';
 import Header from '../template/Header';
-
 import {Apiurl} from '../service/apirest';
 import axios from 'axios';
-
+import '../assets/css/Escritorio.css';
 
 class Escritorio extends React.Component{
 
     state={
         personas:[],
-        clubs:[]
+        clubs:[],
+        licenciasActivadas:[]
     }
 
     clickPersona(id){
@@ -28,19 +28,28 @@ class Escritorio extends React.Component{
         url = Apiurl + "clubs/" + personaId;
         axios.get(url)
         .then(response => {
-            console.log(response)
             this.setState({
                 clubs : response.data
             })
-        })
+        });
+        url = Apiurl + "licencias/" + personaId;
+        console.log(url)
+        axios.get(url)
+        .then(response => {
+            console.log(response)
+            this.setState({
+                licenciasActivadas : response.data
+            })
+        });
     }
     render(){
         return(
             <React.Fragment>
                 <Header></Header>
-                <br/><br/><br/>
-                <div className="container">
-                    <h3>Club</h3>
+                <div className="tableContainer" id="left">
+                    <div className="titulo">
+                        <h3>Club Afiliado</h3>
+                    </div>
                     <table className="table table-hover">
                         <thead>
                             <tr>
@@ -63,8 +72,34 @@ class Escritorio extends React.Component{
                         </tbody>
                     </table>
                 </div>
+                <div className="tableContainer" id="right">
+                    <div className="titulo">
+                        <h3>Licencias Activas</h3>
+                    </div>
+                    <table className="table table-hover">
+                        <thead>
+                            <tr>
+                            <th scope="col">Nombre Especialidad</th>
+                            <th scope="col">Nivel</th>
+                            <th scope="col">Fecha Activacion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {this.state.licenciasActivadas.map((value,index)=>{
+                                return(
+                                    <tr key={index}>
+                                        <td>{value.nombreEspecialidad}</td>
+                                        <td>{value.nivel}</td>
+                                        <td>{value.fechaActivacion}</td>
+                                    </tr>
+                                )
+                            })}
+                            
+                        </tbody>
+                    </table>
+                </div>
                 <br/><br/><br/>
-                <div className="container">
+                {/* <div className="container">
                 <table className="table table-hover">
                     <thead>
                         <tr>
@@ -90,7 +125,7 @@ class Escritorio extends React.Component{
                         
                     </tbody>
                 </table>
-                </div>
+                </div> */}
             </React.Fragment>
         );
     }

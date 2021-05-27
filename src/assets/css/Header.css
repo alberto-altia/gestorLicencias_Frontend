@@ -1,0 +1,25 @@
+.navbar{
+    margin-bottom: 5rem;
+}
+#imagen{
+    margin: 15px;
+}
+a.btn.dropdown-toggle{
+    color: #fff;
+    font-family: "Poppins", sans-serif;
+    font-size: 1.25rem;
+}
+.header-right{
+    width: 10%;
+}
+.header-left{
+    width: 90%;
+}
+.menu{
+    position: relative;
+    display: inline-flex;
+    vertical-align: middle;
+}
+div.dropdown-menu.show{
+    margin-top: 50px;
+}

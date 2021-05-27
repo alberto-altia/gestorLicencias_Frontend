@@ -1,0 +1,22 @@
+.tableContainer#left{
+    float: left;
+    margin-left: 2%;
+}
+.tableContainer#right{
+    float: right;
+    margin-right: 2%;
+}
+.tableContainer{
+    width: 46%;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    border-radius: 10px 10px 10px 10px;
+    background: #fff;
+    position: relative;
+    box-shadow: 0 30px 60px 0 rgb(0 0 0 / 30%);
+    text-align: center;
+    
+}
+.titulo{
+    padding: 1rem;
+}

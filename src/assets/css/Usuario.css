@@ -1,0 +1,29 @@
+
+.tableContainer{
+    padding-left: 2rem;
+    padding-right: 2rem;
+    border-radius: 10px 10px 10px 10px;
+    background: #fff;
+    position: relative;
+    box-shadow: 0 30px 60px 0 rgb(0 0 0 / 30%);
+    text-align: center;
+    flex-wrap: wrap;
+    margin: auto;
+}
+form{
+    display: inline !important; 
+}
+.form-control, .col-md-8{
+    width: 100% !important;
+}
+input{
+    text-align: left !important;
+}
+label{
+    width: 100% !important;
+    text-align: left !important;
+}
+
+.titulo, .containerForm{
+    padding: 1rem;
+}
