@@ -8,7 +8,6 @@ import { Apiurl } from '../service/apirest';
 class Usuario extends React.Component {
 
     state = {
-<<<<<<< HEAD
         form: {
             "nombreApellidos": "",
             "fechaNacimiento": "",
@@ -26,24 +25,6 @@ class Usuario extends React.Component {
         },
         error: false,
         errorMsg: ""
-=======
-       form:{
-        "nombreApellidos": "",
-        "fechaNacimiento": "",
-        "telefono": "",
-        "email": "",
-        "codClub":"" ,
-        "dni": "",
-        "usuario":"",
-        "password":"",
-        "numLicenciaDeportista": "",
-        "numLicenciaEntrenador": "",
-        "numLicenciaJuez": "",
-        "idPersona": ""
-       },
-       error: false,
-       errorMsg: ""     
->>>>>>> 8095142a5af2a0d82c79aad6f49798b8a9399d07
     }
 
     managerChange = async e => {
@@ -79,22 +60,7 @@ class Usuario extends React.Component {
                 });
             })
     }
-<<<<<<< HEAD
     clickEditar(id) {
-=======
-
-    delete = ()=>{
-        let personaId = this.props.match.params.id;
-        let url = Apiurl + "eliminarPersona/" + personaId ;
-        axios.delete(url)
-        .then(response =>{
-            console.log(response)
-            this.props.history.push("/");
-        })
-    }
-
-    clickEditar(id){
->>>>>>> 8095142a5af2a0d82c79aad6f49798b8a9399d07
         this.props.history.push("/editar/" + id);
     }
 
@@ -201,7 +167,6 @@ class Usuario extends React.Component {
                                     </div>
                                 </div>
                             </div>
-<<<<<<< HEAD
                             <br />
                             <div className="titulo">
                                 <button type="submit" className="btn btn-success" style={{ margin: "10px" }} onClick={() => this.clickEditar(localStorage.getItem('idPersona'))}>Editar</button>
@@ -210,14 +175,6 @@ class Usuario extends React.Component {
 
                         </form>
                     </div>
-=======
-                        </div>
-                        <br/>
-                        <button type="submit" className="btn btn-success"style={{margin:"10px"}} onClick={()=>this.clickEditar(localStorage.getItem('idPersona'))}>Editar</button>
-                        <button type="submit" className="btn btn-danger"style={{margin:"10px"}} onClick={()=>this.delete()}>Eliminar</button>  
-                        <a className="btn btn-dark" href="/escritorio" style={{margin:"10px"}}>Salir</a>   
-                    </form>
->>>>>>> 8095142a5af2a0d82c79aad6f49798b8a9399d07
                 </div>
             </React.Fragment>
         );
