@@ -1,13 +1,32 @@
 import axios from 'axios';
 import React from 'react';
+import '../assets/css/Usuario.css';
+import '../assets/css/Header.css';
 
-import {Apiurl} from '../service/apirest';
+import { Apiurl } from '../service/apirest';
 
-import Header from '../template/Header';
-
-class Usuario extends React.Component{
+class Usuario extends React.Component {
 
     state = {
+<<<<<<< HEAD
+        form: {
+            "nombreApellidos": "",
+            "fechaNacimiento": "",
+            "telefono": "",
+            "email": "",
+            "codClub": "",
+            "dni": "",
+            "usuario": "",
+            "password": "",
+            "numLicenciaDeportista": "",
+            "numLicenciaEntrenador": "",
+            "numLicenciaJuez": "",
+            "codClub": "",
+            "idPersona": ""
+        },
+        error: false,
+        errorMsg: ""
+=======
        form:{
         "nombreApellidos": "",
         "fechaNacimiento": "",
@@ -24,6 +43,7 @@ class Usuario extends React.Component{
        },
        error: false,
        errorMsg: ""     
+>>>>>>> 8095142a5af2a0d82c79aad6f49798b8a9399d07
     }
 
     managerChange = async e => {
@@ -34,31 +54,34 @@ class Usuario extends React.Component{
             }
         })
     }
-    componentDidMount(){
+    componentDidMount() {
         let personaId = localStorage.getItem('idPersona');
         let url = Apiurl + "personas/" + personaId;
         axios.get(url)
-        .then(response =>{
-            
-            this.setState({
-                form:{
-                    nombreApellidos : response.data.nombreApellidos,
-                    dni : response.data.dni,
-                    fechaNacimiento : response.data.fechaNacimiento,
-                    telefono : response.data.telefono,
-                    email : response.data.email,
-                    usuario : response.data.usuario,
-                    password : response.data.password,
-                    numLicenciaDeportista : response.data.numLicenciaDeportista, 
-                    numLicenciaEntrenador : response.data.numLicenciaEntrenador,
-                    numLicenciaJuez : response.data.numLicenciaJuez,
-                    codClub : response.data.codClub,
-                    idPersona : response.data.idPersona
-                }
-                
-            });
-        })
+            .then(response => {
+
+                this.setState({
+                    form: {
+                        nombreApellidos: response.data.nombreApellidos,
+                        dni: response.data.dni,
+                        fechaNacimiento: response.data.fechaNacimiento,
+                        telefono: response.data.telefono,
+                        email: response.data.email,
+                        usuario: response.data.usuario,
+                        password: response.data.password,
+                        numLicenciaDeportista: response.data.numLicenciaDeportista,
+                        numLicenciaEntrenador: response.data.numLicenciaEntrenador,
+                        numLicenciaJuez: response.data.numLicenciaJuez,
+                        codClub: response.data.codClub,
+                        idPersona: response.data.idPersona
+                    }
+
+                });
+            })
     }
+<<<<<<< HEAD
+    clickEditar(id) {
+=======
 
     delete = ()=>{
         let personaId = this.props.match.params.id;
@@ -71,106 +94,133 @@ class Usuario extends React.Component{
     }
 
     clickEditar(id){
+>>>>>>> 8095142a5af2a0d82c79aad6f49798b8a9399d07
         this.props.history.push("/editar/" + id);
     }
 
-    render(){
+    render() {
         const form = this.state.form;
-        return(
+        return (
             <React.Fragment>
-                <Header></Header>
-                <br/><br/><br/>
-                <div className="container">
-                    <h3>Datos Persona</h3>
-                </div>
-
-                <div className="container">
-                    <br/>
-                    <form className="form-horizontal" onSubmit={this.managerSubmit}>
-                        <div className="row">
-                                <div className="col-sm-6">
-                                        <label className="col-md-2 control-label">Nombre y Apellido</label>
-                                        <div className="col-md-8">
-                                                <input type="text" className="form-control" name="nombreApellidos" placeholder="nombreApellidos"
-                                                    value={form.nombreApellidos}
-                                                />
-                                        </div>
-                                </div>
+                <nav className="navbar navbar-expand-md navbar-dark bg-dark">
+                    <div className="header-left">
+                        <a href="/escritorio"><img id="imagen" className="logo horizontal-logo" src="https://image.flaticon.com/icons/png/32/1472/1472035.png" alt="forecastr logo" ></img></a>
+                        <div className="menu">
+                            <a className="navbar-brand" href="">Datos Usuario</a>
                         </div>
-                        
-                        <div className="row">
-                            <div className="col-sm-6">
+
+                        <div className="btn-group">
+                            <a type="button" className="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Activar Licencias</a>
+                            <div className="dropdown-menu">
+                                <a className="dropdown-item" href="#">Licencia Deportista</a>
+                                <a className="dropdown-item" href="#">Licencia Entrenador</a>
+                                <a className="dropdown-item" href="#">Licencia Juez</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="header-right">
+                        <a className="navbar-brand" href="/">Log out   <i class="fas fa-user-times"></i></a>
+                    </div>
+                </nav>
+
+                <div className="tableContainer">
+                    <div className="titulo">
+                        <h3>Datos Persona</h3>
+                    </div>
+                    <div className="containerForm">
+                        <br />
+                        <form className="form-horizontal" onSubmit={this.managerSubmit}>
+                            <div className="row">
+                                <label className="col-md-2 control-label">Nombre y Apellido</label>
+                                <input type="text" className="form-control" name="nombreApellidos" placeholder="nombreApellidos"
+                                    value={form.nombreApellidos} disabled
+                                />
+                            </div>
+
+                            <div className="row">
+                                <div className="col-sm-6">
                                     <label className="col-md-2 control-label">DNI</label>
                                     <div className="col-md-8">
-                                            <input type="text" className="form-control" name="dni" placeholder="dni"
-                                                value={form.dni}
-                                            />
+                                        <input type="text" className="form-control" name="dni" placeholder="dni"
+                                            value={form.dni} disabled
+                                        />
                                     </div>
-                            </div>
-                            <div className="col-sm-6">
-                                <label className="col-md-2 control-label">Fecha Nacimiento</label>
-                                <div className="col-md-8">
+                                </div>
+                                <div className="col-sm-6">
+                                    <label className="col-md-2 control-label">Fecha Nacimiento</label>
+                                    <div className="col-md-8">
                                         <input type="text" className="form-control" name="fechaNacimiento" placeholder="Fecha Nacimiento"
-                                            value={form.fechaNacimiento}
+                                            value={form.fechaNacimiento} disabled
                                         />
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className="row">
-                            <div className="col-sm-6">
-                                <label className="col-md-2 control-label">Email</label>
-                                <div className="col-md-8">
+                            <div className="row">
+                                <div className="col-sm-6">
+                                    <label className="col-md-2 control-label">Email</label>
+                                    <div className="col-md-8">
                                         <input type="text" className="form-control" name="email" placeholder="email"
-                                            value={form.email}
+                                            value={form.email} disabled
                                         />
+                                    </div>
                                 </div>
-                            </div> 
-                            <div className="col-sm-6">
-                                <label className="col-md-2 control-label">Telefono</label>
-                                <div className="col-md-8">
+                                <div className="col-sm-6">
+                                    <label className="col-md-2 control-label">Telefono</label>
+                                    <div className="col-md-8">
                                         <input type="text" className="form-control" name="telefono" placeholder="telefono"
-                                            value={form.telefono}
+                                            value={form.telefono} disabled
                                         />
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className="row">
-                            <div className="col-sm-6">
-                                <label className="col-md-2 control-label">Numero Licencia Deportista</label>
-                                <div className="col-md-8">
+                            <div className="row">
+                                <div className="col-sm-6">
+                                    <label className="col-md-2 control-label">Numero Licencia Deportista</label>
+                                    <div className="col-md-8">
                                         <input type="text" className="form-control" name="usuario" placeholder="numero licencia"
-                                            value={form.numLicenciaDeportista}
+                                            value={form.numLicenciaDeportista} disabled
                                         />
+                                    </div>
                                 </div>
-                            </div> 
-                            <div className="col-sm-6">
-                                <label className="col-md-2 control-label">Numero Licencia Entrenador</label>
-                                <div className="col-md-8">
+                                <div className="col-sm-6">
+                                    <label className="col-md-2 control-label">Numero Licencia Entrenador</label>
+                                    <div className="col-md-8">
                                         <input type="text" className="form-control" name="password" placeholder="numero licencia"
-                                            value={form.numLicenciaEntrenador}
+                                            value={form.numLicenciaEntrenador} disabled
                                         />
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className="row">
-                            <div className="col-sm-6">
-                                <label className="col-md-2 control-label">Numero Licencia Juez</label>
-                                <div className="col-md-8">
+                            <div className="row">
+                                <div className="col-sm-6">
+                                    <label className="col-md-2 control-label">Numero Licencia Juez</label>
+                                    <div className="col-md-8">
                                         <input type="text" className="form-control" name="usuario" placeholder="numero licencia"
-                                            value={form.numLicenciaJuez}
+                                            value={form.numLicenciaJuez} disabled
                                         />
+                                    </div>
                                 </div>
                             </div>
+<<<<<<< HEAD
+                            <br />
+                            <div className="titulo">
+                                <button type="submit" className="btn btn-success" style={{ margin: "10px" }} onClick={() => this.clickEditar(localStorage.getItem('idPersona'))}>Editar</button>
+                                <a className="btn btn-dark" href="/escritorio" style={{ margin: "10px" }}>Salir</a>
+                            </div>
+
+                        </form>
+                    </div>
+=======
                         </div>
                         <br/>
                         <button type="submit" className="btn btn-success"style={{margin:"10px"}} onClick={()=>this.clickEditar(localStorage.getItem('idPersona'))}>Editar</button>
                         <button type="submit" className="btn btn-danger"style={{margin:"10px"}} onClick={()=>this.delete()}>Eliminar</button>  
                         <a className="btn btn-dark" href="/escritorio" style={{margin:"10px"}}>Salir</a>   
                     </form>
+>>>>>>> 8095142a5af2a0d82c79aad6f49798b8a9399d07
                 </div>
             </React.Fragment>
         );
     }
 }
-
 export default Usuario

@@ -42,13 +42,12 @@ class Login extends React.Component {
         axios.post(url, this.state.form)
             .then(response => {
                 if(response.status === 200){
-                    console.log(response);
                     localStorage.setItem("idPersona",response.data.idPersona);
                     this.props.history.push("/escritorio");
                 }else{
                     this.setState({
                         error: true,
-                        errorMsg: response.statusText
+                        errorMsg: "error usuario"
                     })
                 }
             }).catch(error =>{
