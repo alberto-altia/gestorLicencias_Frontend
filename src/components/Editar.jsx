@@ -20,7 +20,6 @@ class Editar extends React.Component{
         "numLicenciaDeportista": "",
         "numLicenciaEntrenador": "",
         "numLicenciaJuez": "",
-        "codClub": "",
         "idPersona": ""
        },
        error: false,
