@@ -44,16 +44,6 @@ class Editar extends React.Component{
         })
     }
 
-    delete = ()=>{
-        let personaId = this.props.match.params.id;
-        let url = Apiurl + "eliminarPersona/" + personaId ;
-        axios.delete(url)
-        .then(response =>{
-            console.log(response)
-            this.props.history.push("/escritorio");
-        })
-    }
-
     managerSubmit = e=>{
         e.preventDefault();
     }
@@ -174,7 +164,6 @@ class Editar extends React.Component{
                         
                         <br/>
                         <button type="submit" className="btn btn-primary" style={{margin:"10px"}} onClick={()=>this.put()}>Guardar</button>
-                        <button type="submit" className="btn btn-danger"style={{margin:"10px"}} onClick={()=>this.delete()}>Eliminar</button> 
                         <a className="btn btn-dark" href="/escritorio" style={{margin:"10px"}}>Salir</a>   
                     </form>
                 </div>

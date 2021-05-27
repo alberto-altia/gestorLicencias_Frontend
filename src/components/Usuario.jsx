@@ -20,7 +20,6 @@ class Usuario extends React.Component{
         "numLicenciaDeportista": "",
         "numLicenciaEntrenador": "",
         "numLicenciaJuez": "",
-        "codClub": "",
         "idPersona": ""
        },
        error: false,
@@ -60,6 +59,17 @@ class Usuario extends React.Component{
             });
         })
     }
+
+    delete = ()=>{
+        let personaId = this.props.match.params.id;
+        let url = Apiurl + "eliminarPersona/" + personaId ;
+        axios.delete(url)
+        .then(response =>{
+            console.log(response)
+            this.props.history.push("/");
+        })
+    }
+
     clickEditar(id){
         this.props.history.push("/editar/" + id);
     }
@@ -153,7 +163,8 @@ class Usuario extends React.Component{
                             </div>
                         </div>
                         <br/>
-                        <button type="submit" className="btn btn-success"style={{margin:"10px"}} onClick={()=>this.clickEditar(localStorage.getItem('idPersona'))}>Editar</button> 
+                        <button type="submit" className="btn btn-success"style={{margin:"10px"}} onClick={()=>this.clickEditar(localStorage.getItem('idPersona'))}>Editar</button>
+                        <button type="submit" className="btn btn-danger"style={{margin:"10px"}} onClick={()=>this.delete()}>Eliminar</button>  
                         <a className="btn btn-dark" href="/escritorio" style={{margin:"10px"}}>Salir</a>   
                     </form>
                 </div>
