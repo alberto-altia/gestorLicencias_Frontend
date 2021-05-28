@@ -32,8 +32,9 @@ class Escritorio extends React.Component{
                 clubs : response.data
             })
         });
-        url = Apiurl + "licencias/" + personaId;
+        url = Apiurl + "licencias/" + personaId ;
         console.log(url)
+        console.log(personaId)
         axios.get(url)
         .then(response => {
             console.log(response)
@@ -98,34 +99,7 @@ class Escritorio extends React.Component{
                         </tbody>
                     </table>
                 </div>
-                <br/><br/><br/>
-                {/* <div className="container">
-                <table className="table table-hover">
-                    <thead>
-                        <tr>
-                        <th scope="col">id</th>
-                        <th scope="col">codPersona</th>
-                        <th scope="col">codEspecialidad</th>
-                        <th scope="col">fechaActivacion</th>
-                        <th scope="col">nivel</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.state.personas.map((value,index)=>{
-                            return(
-                                <tr key={index} onClick={()=>this.clickPersona(value.codPersona)}>
-                                    <td>{value.id}</td>
-                                    <td>{value.codPersona}</td>
-                                    <td>{value.codEspecialidad}</td>
-                                    <td>{value.fechaActivacion}</td>
-                                    <td>{value.nivel}</td>
-                                </tr>
-                            )
-                        })}
-                        
-                    </tbody>
-                </table>
-                </div> */}
+                
             </React.Fragment>
         );
     }

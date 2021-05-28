@@ -15,7 +15,7 @@ class Header extends React.Component {
                     <div className="btn-group">
                             <a type="button" className="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Activar Licencias</a>
                             <div className="dropdown-menu">
-                                <a className="dropdown-item" href="#">Licencia Deportista</a>
+                                <a className="dropdown-item" href="nuevaLicencia">Licencia Deportista</a>
                                 <a className="dropdown-item" href="#">Licencia Entrenador</a>
                                 <a className="dropdown-item" href="#">Licencia Juez</a>
                             </div>

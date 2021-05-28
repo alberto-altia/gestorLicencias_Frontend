@@ -1,0 +1,143 @@
+import axios from 'axios';
+import React from 'react';
+import '../assets/css/Header.css';
+import '../assets/css/Editar.css';
+
+import { Apiurl } from '../service/apirest';
+
+
+class NuevaLicenciaDeportista extends React.Component {
+
+    state = {
+       form:{
+        
+        "nombreEspecialidad":"",
+        "codPersona": localStorage.getItem('idPersona'),
+        "nivel":"",
+        "esDeportista":true,
+        "esEntrenador":false,
+        "esJuez":false,
+        "fechaActivacion":""
+       },
+       especialidades:[],
+       error: false,
+       errorMsg: ""     
+    }
+    componentDidMount(){
+        let url = Apiurl + "especialidades";
+        console.log(url)
+        axios.get(url)
+        .then(response => {
+            console.log(response)
+            this.setState({
+                especialidades : response.data
+            })
+        });
+    }
+
+    managerSubmit = e => {
+        e.preventDefault();
+    }
+
+    managerButton = () => {
+        let url = Apiurl + "nuevaLicencia";
+        console.log(url)
+        axios.post(url, this.state.form)
+            .then(response => {
+                if(response.status === 200){
+                    console.log(response)
+                    this.props.history.push("/escritorio");
+                }else{
+                    console.log(response)
+                    this.setState({
+                        error: true,
+                        errorMsg: "error usuario"
+                    })
+                }
+            }).catch(error =>{
+                console.log(error)
+                this.setState({
+                    error: true,
+                    errorMsg: "Error al activar licencia"
+                })
+            })
+        
+    }
+
+    redirigir = () => {
+        let id = localStorage.getItem('idPersona');
+        this.props.history.push("/usuario/" + id);
+    }
+
+    managerChange = async e => {
+        await this.setState({
+            form: {
+                ...this.state.form,
+                [e.target.name]: e.target.value,
+                
+            }
+            
+        })
+        console.log(this.state.form)
+    }
+
+    render() {
+        const form = this.state.form;
+        return (
+            <React.Fragment>
+                <nav className="navbar navbar-expand-md navbar-dark bg-dark">
+                <div className="header-left">
+                    <a href="/escritorio"><img id="imagen" className="logo horizontal-logo" src="https://image.flaticon.com/icons/png/32/1472/1472035.png" alt="forecastr logo" ></img></a>
+                    <div className="menu"> 
+                        <a className="navbar-brand" onClick={() => this.redirigir()}>Datos Usuario</a>
+                    </div>
+                    
+                    <div className="btn-group">
+                            <a type="button" className="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Activar Licencias</a>
+                            <div className="dropdown-menu">
+                                <a className="dropdown-item" href="">Licencia Deportista</a>
+                                <a className="dropdown-item" href="#">Licencia Entrenador</a>
+                                <a className="dropdown-item" href="#">Licencia Juez</a>
+                            </div>
+                    </div>
+                </div>
+                <div className="header-right">
+                    <a className="navbar-brand" href="/">Log out   <i class="fas fa-user-times"></i></a>
+                </div>
+            </nav>
+
+                <div className="tableContainer">
+                    <div className="titulo">
+                        <h3>Activar Licencai Deportista</h3>
+                    </div>
+
+                    <div className="containerForm">
+                        <br />
+                        <form className="form-horizontal" onSubmit={this.managerSubmit}>
+                            <div className="row">
+                                    <label className="col-md-2 control-label">Especialidad</label>
+                                    <input type="text" className="form-control" name="nombreEspecialidad" placeholder="especialidad" onChange={this.managerChange}
+                                    />
+                            </div>
+                            <div className="row">
+                                <label className="col-md-2 control-label">Nivel de la Especialidad</label>
+                                    <input type="text" className="form-control" name="nivel" placeholder="nivel" onChange={this.managerChange}
+                                    />
+                            </div> 
+                            <br/>
+                            <button type="submit" className="btn btn-primary" style={{margin:"10px"}} onClick={this.managerButton}>Activar</button>
+                            <a className="btn btn-dark" href="/escritorio" style={{margin:"10px"}}>Salir</a>   
+                        </form>
+                        {this.state.error === true &&
+                            <div className="alert alert-danger" role="alert">
+                            {this.state.errorMsg}
+                        </div>
+                        }
+                    </div>
+                </div>
+            </React.Fragment>
+        );
+    }
+}
+
+export default NuevaLicenciaDeportista

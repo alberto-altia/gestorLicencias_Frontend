@@ -10,6 +10,7 @@ import Escritorio from './components/Escritorio';
 import Nuevo from './components/Nuevo';
 import Editar from './components/Editar';
 import Usuario from './components/Usuario';
+import NuevaLicenciaDeportista from './components/NuevaLicenciaDeportista';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Switch>
           <Route path="/" exact render={props => (<Login{...props} />)} />
           <Route path="/escritorio" exact render={props => (<Escritorio{...props} />)} />
+          <Route path="/nuevaLicencia" exact render={props => (<NuevaLicenciaDeportista{...props} />)} />
           <Route path="/nuevo" exact render={props => (<Nuevo{...props} />)} />
           <Route path="/editar/:id" exact render={props => (<Editar{...props} />)} />
           <Route path="/usuario/:id" exact render={props => (<Usuario{...props} />)} />
