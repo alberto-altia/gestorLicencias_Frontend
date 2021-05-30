@@ -1,0 +1,15 @@
+.estiloTabla{
+    width: 70%;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    border-radius: 10px 10px 10px 10px;
+    background: #fff;
+    position: relative;
+    box-shadow: 0 30px 60px 0 rgb(0 0 0 / 30%);
+    text-align: center;
+    margin-right: 15%;
+    margin-left: 15%;
+}
+.titulo{
+    padding: 1rem;
+}

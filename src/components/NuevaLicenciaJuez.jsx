@@ -7,7 +7,7 @@ import '../assets/css/NuevaLicencia.css';
 import { Apiurl } from '../service/apirest';
 
 
-class NuevaLicenciaDeportista extends React.Component {
+class NuevaLicenciaJuez extends React.Component {
 
     state = {
        form:{
@@ -15,14 +15,25 @@ class NuevaLicenciaDeportista extends React.Component {
         "nombreEspecialidad":"",
         "codPersona": localStorage.getItem('idPersona'),
         "nivel":"",
-        "esDeportista":true,
+        "esDeportista":false,
         "esEntrenador":false,
-        "esJuez":false,
+        "esJuez":true,
         "fechaActivacion":""
        },
        
        error: false,
        errorMsg: ""     
+    }
+    componentDidMount(){
+        let url = Apiurl + "especialidades";
+        console.log(url)
+        axios.get(url)
+        .then(response => {
+            console.log(response)
+            this.setState({
+                especialidades : response.data
+            })
+        });
     }
 
     managerSubmit = e => {
@@ -85,9 +96,9 @@ class NuevaLicenciaDeportista extends React.Component {
                     <div className="btn-group">
                             <a type="button" className="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Activar Licencias</a>
                             <div className="dropdown-menu">
-                                <a className="dropdown-item" href="">Licencia Deportista</a>
-                                <a className="dropdown-item" href="nuevaLicenciaEntrenador">Licencia Entrenador</a>
-                                <a className="dropdown-item" href="nuevaLicenciaJuez">Licencia Juez</a>
+                                <a className="dropdown-item" href="/nuevaLicenciaDeportista">Licencia Deportista</a>
+                                <a className="dropdown-item" href="/nuevaLicenciaEntrenador">Licencia Entrenador</a>
+                                <a className="dropdown-item" href="">Licencia Juez</a>
                             </div>
                     </div>
                 </div>
@@ -98,7 +109,7 @@ class NuevaLicenciaDeportista extends React.Component {
 
                 <div className="tableContainer">
                     <div className="titulo">
-                        <h3>Activar Licencia Deportista</h3>
+                        <h3>Activar Licencia Juez</h3>
                     </div>
 
                     <div className="containerForm">
@@ -137,4 +148,4 @@ class NuevaLicenciaDeportista extends React.Component {
     }
 }
 
-export default NuevaLicenciaDeportista
+export default NuevaLicenciaJuez
