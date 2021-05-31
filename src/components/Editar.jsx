@@ -63,8 +63,6 @@ class Editar extends React.Component {
     managerSubmit = e => {
         e.preventDefault();
     }
-
-
     componentDidMount() {
         let id = this.props.match.params.id;
         let url = Apiurl + "personas/" + id;
