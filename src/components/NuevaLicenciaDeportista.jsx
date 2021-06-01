@@ -11,7 +11,6 @@ class NuevaLicenciaDeportista extends React.Component {
 
     state = {
        form:{
-        
         "nombreEspecialidad":"",
         "codPersona": localStorage.getItem('idPersona'),
         "nivel":"",
@@ -64,9 +63,7 @@ class NuevaLicenciaDeportista extends React.Component {
             form: {
                 ...this.state.form,
                 [e.target.name]: e.target.value,
-                
             }
-            
         })
         console.log(this.state.form)
     }
@@ -109,6 +106,7 @@ class NuevaLicenciaDeportista extends React.Component {
                                     <select className="form-select" aria-label="Especialidad" name="nombreEspecialidad"  onChange={this.managerChange}>
                                         <option selected>Especialidad</option>
                                         <option value="Latinos">Latinos</option>
+                                        <option value="Estandard">Standard</option>
                                         <option value="Caribeños">Caribeños</option>
                                         <option value="Hip Hop">Hip Hop</option>
                                         <option value="Fit Kid">Fit Kid</option>

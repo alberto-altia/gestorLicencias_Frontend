@@ -120,6 +120,7 @@ class NuevaLicenciaJuez extends React.Component {
                                     <select className="form-select" aria-label="Especialidad" name="nombreEspecialidad"  onChange={this.managerChange}>
                                         <option selected>Especialidad</option>
                                         <option value="Latinos">Latinos</option>
+                                        <option value="Estandard">Standard</option>
                                         <option value="Caribeños">Caribeños</option>
                                         <option value="Hip Hop">Hip Hop</option>
                                         <option value="Fit Kid">Fit Kid</option>

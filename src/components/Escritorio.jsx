@@ -36,6 +36,7 @@ class Escritorio extends React.Component {
             });
     }
     clickClub(id) {
+        localStorage.setItem("codClub",id);
         this.props.history.push("/deportistas/" + id)
     }
     

@@ -9,7 +9,15 @@
     text-align: center;
     margin-right: 15%;
     margin-left: 15%;
+    margin-top: 3%;
 }
 .titulo{
     padding: 1rem;
+}
+
+button{
+    margin: 20px;
+}
+.btn.btn-outline-danger{
+    margin: 0% !important;
 }

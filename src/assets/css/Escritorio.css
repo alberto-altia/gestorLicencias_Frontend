@@ -20,3 +20,7 @@
 .titulo{
     padding: 1rem;
 }
+
+.btn.btn-outline-danger{
+    margin: 0% !important;
+}
