@@ -155,13 +155,14 @@ class NuevoDeportista extends React.Component {
                             </div>
                                
                             <button type="submit" className="btn btn-primary" style={{margin:"10px"}} onClick={()=>this.guardar()}>Guardar</button>
-                            <a className="btn btn-dark" href="/escritorio" style={{margin:"10px"}}>Cancelar</a>   
+                            <a className="btn btn-dark" href={"/deportistas/" + localStorage.getItem('codClub')} style={{margin:"10px"}}>Cancelar</a>   
                         </form>
                         {this.state.error === true &&
-                        <div className="alert alert-danger" role="alert">
-                           {this.state.errorMsg}
-                       </div>
-                    }  
+                            <div className="alert alert-danger" role="alert">
+                            {this.state.errorMsg}
+                        </div>
+                        } 
+                         
                     </div>
                 </div>
             </React.Fragment>

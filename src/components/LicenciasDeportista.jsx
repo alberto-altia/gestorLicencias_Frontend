@@ -5,6 +5,7 @@ import '../assets/css/Editar.css';
 import '../assets/css/NuevaLicencia.css';
 
 import { Apiurl } from '../service/apirest';
+import Header from '../template/Header';
 
 
 class LicenciasDeportista extends React.Component {
@@ -109,26 +110,7 @@ class LicenciasDeportista extends React.Component {
         const form = this.state.form;
         return (
             <React.Fragment>
-                <nav className="navbar navbar-expand-md navbar-dark bg-dark">
-                    <div className="header-left">
-                        <a href="/escritorio"><img id="imagen" className="logo horizontal-logo" src="https://image.flaticon.com/icons/png/32/1472/1472035.png" alt="forecastr logo" ></img></a>
-                        <div className="menu">
-                            <a className="navbar-brand" onClick={() => this.redirigir()}>Datos Usuario</a>
-                        </div>
-
-                        <div className="btn-group">
-                            <a type="button" className="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Activar Licencias</a>
-                            <div className="dropdown-menu">
-                                <a className="dropdown-item" href="">Licencia Deportista</a>
-                                <a className="dropdown-item" href="nuevaLicenciaEntrenador">Licencia Entrenador</a>
-                                <a className="dropdown-item" href="nuevaLicenciaJuez">Licencia Juez</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="header-right">
-                        <a className="navbar-brand" href="/">Log out   <i class="fas fa-user-times"></i></a>
-                    </div>
-                </nav>
+                <Header></Header>
 
                 <div className="tableContainer">
                     <div className="titulo">
@@ -203,31 +185,9 @@ class LicenciasDeportista extends React.Component {
                             </div>
                             <br />
                             <button type="submit" className="btn btn-primary" style={{ margin: "10px" }} onClick={this.managerButton}>Activar</button>
-                            <button data-entry-number="2" class="btn btn-outline-danger " type="button" aria-label="Delete" data-toggle="modal" data-target="#delete-modal-persona" title="Delete" >
+                            <button class="btn btn-outline-danger " type="button" onClick={() => this.clickConfirmarEliminarDeportista()}>
                                 Eliminar Deportista
                             </button>
-
-                            <div className="modal fade" id="delete-modal-persona" tabindex="-1" role="dialog" aria-labelledby="modalTitle"
-                                aria-hidden="true">
-                                <div className="modal-dialog modal-dialog-centered" role="document">
-                                    <div className="modal-content">
-                                        <div className="modal-header">
-                                            <h5 className="modal-title" id="modalTitle">Eliminar Deportista</h5>
-                                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div className="modal-body">
-                                            Deseas eliminar este Deportista ? <span id="entry-num"></span>
-
-                                        </div>
-                                        <div className="modal-footer">
-                                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                            <button type="button" className="btn btn-danger" id="delete-confirm" onClick={() => this.clickConfirmarEliminarDeportista()}>Si</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
 
                             <a className="btn btn-dark" href={"/deportistas/" + localStorage.getItem('codClub')} style={{ margin: "10px" }}>Salir</a>
                         </form>
