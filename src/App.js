@@ -16,7 +16,20 @@ import DeportistasClub from './components/DeportistasClub';
 import NuevoDeportista from './components/NuevoDeportista';
 import LicenciasDeportista from './components/LicenciasDeportista';
 
+import axios from 'axios';
+
 function App() {
+  axios.interceptors.request.use(
+    request => {
+      if(request.url.includes('login'))
+        return request;      
+      request.headers['Authorization'] = 'Bearer ' + localStorage.getItem('jwt');
+      return request;
+    },
+    error => 
+      Promise.reject(error)    
+  )
+
   return (
     <React.Fragment>
       <Router>

@@ -65,7 +65,7 @@ class Editar extends React.Component {
     }
     componentDidMount() {
         let id = this.props.match.params.id;
-        let url = Apiurl + "personas/" + id;
+        let url = Apiurl + "datos-persona";
         axios.get(url)
             .then(response => {
 
@@ -111,7 +111,7 @@ class Editar extends React.Component {
                     </div>
                 </div>
                 <div className="header-right">
-                    <a className="navbar-brand" href="/">Log out   <i class="fas fa-user-times"></i></a>
+                    <a className="navbar-brand" href="/">Log out   <i className="fas fa-user-times"></i></a>
                 </div>
             </nav>
 

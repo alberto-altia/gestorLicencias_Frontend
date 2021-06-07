@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React from 'react';
 import '../assets/css/Usuario.css';
+
 import '../assets/css/Header.css';
 
 import { Apiurl } from '../service/apirest';
@@ -35,8 +36,7 @@ class Usuario extends React.Component {
         })
     }
     componentDidMount() {
-        let personaId = localStorage.getItem('idPersona');
-        let url = Apiurl + "personas/" + personaId;
+        let url = Apiurl + "datos-persona";
         axios.get(url)
             .then(response => {
 
@@ -84,7 +84,7 @@ class Usuario extends React.Component {
                         </div>
                     </div>
                     <div className="header-right">
-                        <a className="navbar-brand" href="/">Log out   <i class="fas fa-user-times"></i></a>
+                        <a className="navbar-brand" href="/">Log out   <i className="fas fa-user-times"></i></a>
                     </div>
                 </nav>
 

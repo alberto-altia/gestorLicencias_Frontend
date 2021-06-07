@@ -42,7 +42,11 @@ class Login extends React.Component {
         axios.post(url, this.state.form)
             .then(response => {
                 if(response.status === 200){
-                    localStorage.setItem("idPersona",response.data.idPersona);
+                    console.log("200 response");
+                    console.log(response);
+                    localStorage.clear();
+                    localStorage.setItem("jwt",response.data.jwt);
+                    console.log(localStorage.getItem('jwt'))
                     this.props.history.push("/escritorio");
                 }else{
                     this.setState({

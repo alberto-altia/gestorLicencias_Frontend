@@ -22,12 +22,11 @@ class DeportistasClub extends React.Component{
     componentDidMount(){        
         let codClub = this.props.match.params.id;
         let url = Apiurl + "deportistas/" + codClub;
-        console.log(url)
         axios.get(url)
         .then(response => {
-            console.log(response)
+            let id = JSON.parse(atob(localStorage.getItem('jwt').split('.')[1])).userId;
             this.setState({
-                personas : response.data
+                personas : response.data.filter(persona => persona.idPersona != id)
             })
         });
     }

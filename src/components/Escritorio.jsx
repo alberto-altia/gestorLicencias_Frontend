@@ -18,15 +18,14 @@ class Escritorio extends React.Component {
     }
 
     componentDidMount() {
-        let personaId = localStorage.getItem('idPersona');
-        let url = Apiurl + "clubs/" + personaId;
+        let url = Apiurl + "mis-clubs";
         axios.get(url)
             .then(response => {
                 this.setState({
                     clubs: response.data
                 })
             });
-        url = Apiurl + "licencias/" + personaId;
+        url = Apiurl + "mis-licencias";
         axios.get(url)
             .then(response => {
                 console.log(response)
@@ -35,6 +34,7 @@ class Escritorio extends React.Component {
                 })
             });
     }
+
     clickClub(id) {
         localStorage.setItem("codClub",id);
         this.props.history.push("/deportistas/" + id)
@@ -104,19 +104,19 @@ class Escritorio extends React.Component {
                             {this.state.licenciasActivadas.map((value, index) => {
                                 return (
                                     <tr key={index}>
-                                        <td>{value.nombreEspecialidad}</td>
+                                        <td>{value.nombreEspecialidad}</td> 
                                         <td>{value.nivel}</td>
                                         <td>{value.fechaActivacion}</td>
                                         <td>{value.tipoLicencia}</td>
-                                        <td> <button data-entry-number="2" class="btn btn-outline-danger " type="button" aria-label="Delete" data-toggle="modal" data-target="#delete-modal" title="Delete" onClick={()=>this.clickLicencia(value.idLicencia)}>
-                                                <i class="fa fa-trash"/>
+                                        <td> <button data-entry-number="2" className="btn btn-outline-danger " type="button" aria-label="Delete" data-toggle="modal" data-target="#delete-modal" title="Delete" onClick={()=>this.clickLicencia(value.idLicencia)}>
+                                                <i className="fa fa-trash"/>
                                             </button></td>
                                     </tr>
                                 )
                             })}
                         </tbody>
                     </table>
-                    <div className="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="modalTitle"
+                    <div className="modal fade" id="delete-modal" tabIndex="-1" role="dialog" aria-labelledby="modalTitle"
                         aria-hidden="true">
                         <div className="modal-dialog modal-dialog-centered" role="document">
                             <div className="modal-content">

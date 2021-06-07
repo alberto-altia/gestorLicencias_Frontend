@@ -12,7 +12,7 @@ class NuevaLicenciaDeportista extends React.Component {
     state = {
        form:{
         "nombreEspecialidad":"",
-        "codPersona": localStorage.getItem('idPersona'),
+        "codPersona": JSON.parse(atob(localStorage.getItem('jwt').split('.')[1])).userId,
         "nivel":"",
         "esDeportista":true,
         "esEntrenador":false,
@@ -30,7 +30,6 @@ class NuevaLicenciaDeportista extends React.Component {
 
     managerButton = () => {
         let url = Apiurl + "nuevaLicencia";
-        console.log(url)
         axios.post(url, this.state.form)
             .then(response => {
                 if(response.status === 200){
@@ -89,7 +88,7 @@ class NuevaLicenciaDeportista extends React.Component {
                     </div>
                 </div>
                 <div className="header-right">
-                    <a className="navbar-brand" href="/">Log out   <i class="fas fa-user-times"></i></a>
+                    <a className="navbar-brand" href="/">Log out   <i className="fas fa-user-times"></i></a>
                 </div>
             </nav>
 

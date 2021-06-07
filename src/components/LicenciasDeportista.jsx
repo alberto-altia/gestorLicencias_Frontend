@@ -133,15 +133,15 @@ class LicenciasDeportista extends React.Component {
                                         <td>{value.nivel}</td>
                                         <td>{value.fechaActivacion}</td>
                                         <td>{value.tipoLicencia}</td>
-                                        <td> <button data-entry-number="2" class="btn btn-outline-danger " type="button" aria-label="Delete" data-toggle="modal" data-target="#delete-modal-licencia" title="Delete" onClick={() => this.clickLicencia(value.idLicencia)}>
-                                            <i class="fa fa-trash" />
+                                        <td> <button data-entry-number="2" className="btn btn-outline-danger " type="button" aria-label="Delete" data-toggle="modal" data-target="#delete-modal-licencia" title="Delete" onClick={() => this.clickLicencia(value.idLicencia)}>
+                                            <i className="fa fa-trash" />
                                         </button></td>
                                     </tr>
                                 )
                             })}
                         </tbody>
                     </table>
-                    <div className="modal fade" id="delete-modal-licencia" tabindex="-1" role="dialog" aria-labelledby="modalTitle"
+                    <div className="modal fade" id="delete-modal-licencia" tabIndex="-1" role="dialog" aria-labelledby="modalTitle"
                         aria-hidden="true">
                         <div className="modal-dialog modal-dialog-centered" role="document">
                             <div className="modal-content">
@@ -185,7 +185,7 @@ class LicenciasDeportista extends React.Component {
                             </div>
                             <br />
                             <button type="submit" className="btn btn-primary" style={{ margin: "10px" }} onClick={this.managerButton}>Activar</button>
-                            <button class="btn btn-outline-danger " type="button" onClick={() => this.clickConfirmarEliminarDeportista()}>
+                            <button className="btn btn-outline-danger " type="button" onClick={() => this.clickConfirmarEliminarDeportista()}>
                                 Eliminar Deportista
                             </button>
 
